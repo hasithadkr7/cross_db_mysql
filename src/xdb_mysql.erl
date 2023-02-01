@@ -9,11 +9,7 @@
 -behaviour(supervisor).
 
 %% Application callbacks
--export([
-  start/2,
-  stop/1
-]).
-
+-export([start/2, stop/1]).
 %% Supervisor callbacks
 -export([init/1]).
 
@@ -23,11 +19,11 @@
 
 %% @hidden
 start(_StartType, _StartArgs) ->
-  supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 %% @hidden
 stop(_State) ->
-  ok.
+    ok.
 
 %%%===================================================================
 %%% Supervisor callbacks
@@ -35,4 +31,4 @@ stop(_State) ->
 
 %% @hidden
 init([]) ->
-  {ok, {{one_for_one, 10, 10}, []}}.
+    {ok, {{one_for_one, 10, 10}, []}}.
